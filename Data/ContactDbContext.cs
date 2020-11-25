@@ -11,6 +11,7 @@ namespace Contact_API.Data
     {
         public ContactDbContext(DbContextOptions<ContactDbContext> options) : base(options){}
 
+        public DbSet<User> Users { get; set; }
         public DbSet<Person> People { get; set; }
         public DbSet<Skill> Skills { get; set; }
         public DbSet<PersonnalSkill> PersonnalSkills { get; set; }
