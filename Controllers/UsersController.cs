@@ -44,7 +44,7 @@ namespace Contact_API.Controllers
                     Name = user.Name,
                     Email = user.Email,
                     Password = SecurePasswordHasherHelper.Hash(user.Password),
-                    Role="Users"
+                    Role="User"
                 };
                 _dbContext.Users.Add(userObj);
                 _dbContext.SaveChanges();
@@ -68,6 +68,7 @@ namespace Contact_API.Controllers
             {
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim(ClaimTypes.Email, user.Email),
+                new Claim(ClaimTypes.Role, userEmail.Role )
             };
             var token = _auth.GenerateAccessToken(claims);
 
